@@ -38,7 +38,6 @@ public class SequenceChecker : MonoBehaviour
 
 		OnFail.AddListener(() => {
 			ResetInputSequence();
-			anim.Play("Fail");
 		});
 	}
 

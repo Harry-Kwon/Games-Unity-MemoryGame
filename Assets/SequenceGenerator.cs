@@ -44,7 +44,7 @@ public class SequenceGenerator : MonoBehaviour
 		{
 			if(nextAnim < currentSequence.Count)
 			{
-				Debug.Log(nextAnim);
+				// play animation for current button
 				anim.Play(s[(int) currentSequence[nextAnim]]);
 				nextAnim++;
 			} else {

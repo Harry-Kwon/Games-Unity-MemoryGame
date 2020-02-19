@@ -31,7 +31,6 @@ public class SequenceChecker : MonoBehaviour
 		if(clicked == (int) generator.currentSequence[position])
 		{
 			// play good animation
-			anim.Play(generator.s[clicked], 0, 0.0f);
 			position++;
 
 			progressBar.ColorBar(clicked);

@@ -1,10 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+
 
 public class SequenceChecker : MonoBehaviour
 {
+	[Serializable]
+	public class SuccessEvent : UnityEvent { }
+	[Serializable]
+	public class FailEvent : UnityEvent { }
+
+	[SerializeField]
+	public SuccessEvent OnSuccess = new SuccessEvent();
+	[SerializeField]
+	public FailEvent OnFail = new FailEvent();
+
+
 	int position = 0;
 	public GameObject[] buttons;
 	public SequenceGenerator generator;
@@ -13,18 +27,22 @@ public class SequenceChecker : MonoBehaviour
 
 	public ProgressBar progressBar;
 
-
 	public void Start()
 	{
 		anim = GetComponent<Animator>();
 		for(int i=0; i<buttons.Length; i++)
 		{
 			int x = i;
-			buttons[i].GetComponent<Button>().onClick.AddListener(() => { handleClick(x); });
+			buttons[i].GetComponent<Button>().onClick.AddListener(() => { handleButtonClick(x); });
 		}
+
+		OnFail.AddListener(() => {
+			ResetInputSequence();
+			anim.Play("Fail");
+		});
 	}
 
-	void handleClick(int clicked)
+	void handleButtonClick(int clicked)
 	{
 		if (position >= generator.currentSequence.Count) { return; }
 
@@ -32,30 +50,21 @@ public class SequenceChecker : MonoBehaviour
 		{
 			// play good animation
 			position++;
-
 			progressBar.ColorBar(clicked);
 
 			if(position >= generator.currentSequence.Count)
 			{
-				// play success sound
-				generator.OnInputSuccess();
+				OnSuccess.Invoke();
 			}
 		} else
 		{
-			OnFail();
+			OnFail.Invoke();
 		}
-	}
-
-	public void OnFail()
-	{
-		anim.Play("Fail");
-		ResetInputSequence();
 	}
 
 	public void ResetInputSequence()
 	{
 		position = 0;
-		progressBar.Reset();
 	}
 
 }

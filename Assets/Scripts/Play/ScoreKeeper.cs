@@ -12,7 +12,7 @@ public class ScoreKeeper : MonoBehaviour
 	public void IncrementScore()
 	{
 		Score += nextIncrement;
-		nextIncrement++;
+		//nextIncrement++;
 		SetScoreText();
 	}
 
@@ -23,12 +23,9 @@ public class ScoreKeeper : MonoBehaviour
 		SetScoreText();
 	}
 
-
-	Text scoreText;
+	public Text scoreText;
 	void Start()
 	{
-		scoreText = GetComponentInChildren<Text>();
-
 		ResetScore();
 	}
 
@@ -39,4 +36,5 @@ public class ScoreKeeper : MonoBehaviour
 			scoreText.text = "Score: " + Score;
 		}
 	}
+
 }

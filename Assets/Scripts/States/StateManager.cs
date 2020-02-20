@@ -37,6 +37,11 @@ public class StateManager : MonoBehaviour
 		currentState = next;
 	}
 
+	public void TransitionToState(string state)
+	{
+		TransitionState(state);
+	}
+
 	void Awake()
     {
 		// set current state to default state

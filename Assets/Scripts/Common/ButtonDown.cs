@@ -11,6 +11,11 @@ public class ButtonDown : MonoBehaviour, IPointerDownHandler
 
 	[SerializeField]
 	public ButtonDownEvent onButtonDown = new ButtonDownEvent();
+	
+	void Start()
+	{
+		GetComponent<Image>().alphaHitTestMinimumThreshold = 1.0f;
+	}
 
 	public void OnPointerDown(PointerEventData data)
 	{

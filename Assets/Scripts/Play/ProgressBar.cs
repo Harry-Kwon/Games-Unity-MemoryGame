@@ -9,16 +9,17 @@ public class ProgressBar : MonoBehaviour
 	public Color defaultColor;
 	public GameObject barPrefab;
 
-	List<GameObject> bars;
+	List<GameObject> bars = new List<GameObject>();
 	private int current = 0;
 
 	public void AddBar()
 	{
 		GameObject b = (GameObject) Instantiate(barPrefab, transform);
 		bars.Add(b);
+		Debug.Log(bars.Count);
 	}
 
-	public void Reset()
+	public void ResetColors()
 	{
 		current = 0;
 		foreach(GameObject g in bars)
@@ -34,7 +35,7 @@ public class ProgressBar : MonoBehaviour
 		current++;
 	}
 
-	public void Start()
+	public void Reset()
 	{
 		// destroy children
 		for(int i=0; i<transform.childCount; i++)
@@ -44,5 +45,11 @@ public class ProgressBar : MonoBehaviour
 
 		bars = new List<GameObject>();
 		AddBar();
+		current = 0;
+	}
+
+	public void Start()
+	{
+		Reset();
 	}
 }

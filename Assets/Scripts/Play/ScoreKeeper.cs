@@ -25,7 +25,7 @@ public class ScoreKeeper : MonoBehaviour
 
 
 	Text scoreText;
-	private void Start()
+	void Start()
 	{
 		scoreText = GetComponentInChildren<Text>();
 
@@ -34,6 +34,9 @@ public class ScoreKeeper : MonoBehaviour
 
 	void SetScoreText()
 	{
-		scoreText.text = "Score: " + Score;
+		if(scoreText)
+		{
+			scoreText.text = "Score: " + Score;
+		}
 	}
 }

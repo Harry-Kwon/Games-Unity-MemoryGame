@@ -6,6 +6,14 @@ public class MenuStateController : StateController
 {
 	new const string stateName = "Menu";
 
+	public override void ExitState()
+	{
+		// default behavior is to disable child objects
+		// default behavior not called to persist menu sounds
+		//base.ExitState();
+		OnExitState.Invoke();
+	}
+
 	public void OnExitButton()
 	{
 		// exit game

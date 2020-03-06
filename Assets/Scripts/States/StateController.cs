@@ -7,7 +7,7 @@ public class StateController : MonoBehaviour
 {
 	public string stateName;
 
-	public void ExitState()
+	public virtual void ExitState()
 	{
 		Debug.Log("Exiting State");
 		for(int i=0; i<transform.childCount; i++)
@@ -17,7 +17,7 @@ public class StateController : MonoBehaviour
 		OnExitState.Invoke();
 	}
 
-	public void EnterState()
+	public virtual void EnterState()
 	{
 		Debug.Log("Entering State");
 		for(int i=0; i<transform.childCount; i++)

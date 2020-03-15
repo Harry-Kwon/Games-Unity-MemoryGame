@@ -75,7 +75,7 @@ public class SequenceGenerator : MonoBehaviour
 		StartAnimation();
 	}
 
-    void Start()
+    void Awake()
     {
 		StartSequence();
 		anim = GetComponent<Animator>();

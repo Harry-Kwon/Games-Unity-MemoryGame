@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 84979882}
   - component: {fileID: 84979884}
   - component: {fileID: 84979883}
+  - component: {fileID: 84979885}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -337,6 +338,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84979881}
   m_CullTransparentMesh: 0
+--- !u!114 &84979885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84979881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b377ef1cb4ad3f449da7ab02fe0ee1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreKeeper: {fileID: 1521791235}
 --- !u!1 &87261098
 GameObject:
   m_ObjectHideFlags: 0
@@ -10065,7 +10079,7 @@ PrefabInstance:
     - target: {fileID: 9212730552332934764, guid: 5ec8c5bf86a17b649a853a93c132c366,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -63.03151
+      value: -63.031506
       objectReference: {fileID: 0}
     - target: {fileID: 9212730552332934764, guid: 5ec8c5bf86a17b649a853a93c132c366,
         type: 3}
@@ -10277,7 +10291,7 @@ PrefabInstance:
     - target: {fileID: 9212730552332934764, guid: 5ec8c5bf86a17b649a853a93c132c366,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -21.010498
+      value: -21.010502
       objectReference: {fileID: 0}
     - target: {fileID: 9212730552332934764, guid: 5ec8c5bf86a17b649a853a93c132c366,
         type: 3}

@@ -8,13 +8,15 @@ public class ScoreLoader : MonoBehaviour
 	public GameObject RowPrefab;
 	public GameObject Container;
 
-    void Start()
+    void OnEnable()
     {
-		ScoreData[] scores = new ScoreData[10];
+		int[] scores = new int[10];
 		for(int i=0; i<scores.Length; i++)
 		{
-			scores[i] = new ScoreData("AAA", Random.Range(0, 100000));
+			scores[i] = PlayerPrefs.GetInt($"score{i}", 0);
 		}
+		Debug.Log(scores);
+
 		SetScores(scores);
     }
 
@@ -24,27 +26,14 @@ public class ScoreLoader : MonoBehaviour
         
     }
 	
-	private void SetScores(ScoreData[] sortedScoreData)
+	private void SetScores(int[] sortedScoreData)
 	{
-		int rows = Mathf.Min(sortedScoreData.Length, Container.transform.childCount);
+		int rows = 10;//Mathf.Min(sortedScoreData.Length, Container.transform.childCount);
 		for (int i = 0; i < rows; i++)
 		{
 			Transform row = Container.transform.GetChild(i);
 			row.GetChild(0).GetComponentInChildren<Text>().text = ""+(i+1);
-			row.GetChild(1).GetComponentInChildren<Text>().text = sortedScoreData[i].Name;
-			row.GetChild(2).GetComponentInChildren<Text>().text = ""+sortedScoreData[i].Score;
+			row.GetChild(1).GetComponentInChildren<Text>().text = ""+sortedScoreData[i];
 		}
-	}
-}
-
-public class ScoreData
-{
-	public string Name;
-	public int Score;
-
-	public ScoreData(string name, int score)
-	{
-		this.Name = name;
-		this.Score = score;
 	}
 }
